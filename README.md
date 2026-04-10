@@ -327,3 +327,28 @@ styles.css
 app.js
 data.js
 README.md
+```
+
+---
+
+## 8. GitHub Pages 托管
+
+本项目是纯静态网页（HTML/CSS/JS），可直接通过 GitHub Pages 托管。
+
+### 8.1 部署步骤
+
+1. 将本仓库代码推送到默认分支（通常为 `main`）。
+2. 进入仓库页面：`Settings` → `Pages`。
+3. 在 **Build and deployment** 中设置：
+   - **Source**: `Deploy from a branch`
+   - **Branch**: `main`
+   - **Folder**: `/ (root)`
+4. 点击 `Save`，等待 1~3 分钟完成部署。
+5. 部署完成后可通过以下地址访问：
+   - `https://printeger.github.io/schedule/`
+
+### 8.2 使用说明
+
+- 主页入口文件为仓库根目录下的 `index.html`。
+- 页面更新后若未立即生效，可强制刷新浏览器（Ctrl/Cmd + Shift + R）或等待 CDN 缓存刷新。
+- 本项目使用 `localStorage` 保存勾选与备注，在 GitHub Pages 域名下可正常工作。
