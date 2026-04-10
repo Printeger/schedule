@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>本周日程表</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="sheet">
+      <div class="header">
+        <div class="row">
+          <div>
+            <h1 id="pageTitle"></h1>
+            <div class="sub" id="pageSubtitle"></div>
+          </div>
+          <div class="controls">
+            <button onclick="saveSnapshot()">保存快照</button>
+            <button onclick="fillNotes()">展开备注模板</button>
+            <button onclick="resetChecks()">清空勾选</button>
+            <button onclick="resetAll()">恢复初始状态</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero">
+        <div class="stack">
+          <div class="card">
+            <h2>重大节点甘特图</h2>
+            <div class="legend">
+              <span class="chip">条形＝推进区间</span>
+              <span class="chip">红点＝截止点</span>
+              <span class="chip">虚线＝当前周</span>
+            </div>
+            <div class="gantt">
+              <div class="ggrid" id="ganttGrid"></div>
+            </div>
+            <div class="note">当前阶段优先级：<b>RL 论文 &gt; 风机结题 &gt; SLAM 持续推进 &gt; ITF 预热</b>。</div>
+          </div>
+
+          <div class="card">
+            <h2>本周必须守住的 4 件事</h2>
+            <ul id="focusList"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="calendar-wrap">
+        <div class="calendar">
+          <div class="card">
+            <h2>周日历</h2>
+            <div class="cgrid" id="calendarGrid"></div>
+          </div>
+
+          <div class="card sel">
+            <div class="row">
+              <div>
+                <h3 id="selTitle">周四 · 04/09</h3>
+                <div class="muted">点击左侧日期，查看当天任务摘要并定位到下方列表。</div>
+              </div>
+              <button onclick="scrollToSelectedDay()">定位到列表</button>
+            </div>
+
+            <div class="tags" id="selTags"></div>
+            <div id="selSections"></div>
+            <div class="box">
+              <h4>备注</h4>
+              <div class="muted" id="selNote">今天的实际进展 / 卡点 / 明天要延续的内容</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week" id="weekList"></div>
+
+      <div class="footer">
+        <div class="card small">
+          <h2 style="margin-top:0;font-size:16px">使用方式</h2>
+          1. 每天只抓一个主任务。<br />
+          2. 勾选完成项，并在备注里写卡点。<br />
+          3. 点击周日历可看当天摘要并跳到详细列表。<br />
+          4. 更新下一周前，先保存快照。
+        </div>
+
+        <div class="card small">
+          <h2 style="margin-top:0;font-size:16px">本周判断标准</h2>
+          如果到周三你已经拿到：<br />
+          - RL 的问题定义 + baseline + 第一轮可运行结果；<br />
+          - 风机项目的模型路线 + 专利骨架 + 外部排期；<br />
+          - SLAM 的清晰完成定义；<br />
+          那这周就是有效推进。
+        </div>
+
+        <div class="card small">
+          <div class="row">
+            <h2 style="margin:0;font-size:16px">历史归档</h2>
+            <button onclick="saveSnapshot()">+ 保存快照</button>
+          </div>
+          <div id="archive" class="archive"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
